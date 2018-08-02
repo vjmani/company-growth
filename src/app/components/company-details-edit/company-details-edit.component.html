@@ -1,0 +1,71 @@
+<div class='company-details-edit'>
+  <div class="row">
+    <div class="col-md-3">
+      <div class="go-back-link">
+        <a routerLink='/'>Go Back</a>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="informationSaved" class="alert alert-success alert-dismissible fade show" role="alert">
+    <strong>Information Saved Successfully !!!</strong>
+    <button type="button" (click)='goBackToHome()' class="close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <form>
+    <div class="form-group">
+      <label for="name">Company Name</label>
+      <input
+        [(ngModel)]='companyDetails.name'
+        type="text"
+        class="form-control"
+        id="name"
+        name="name"
+        placeholder="Company Name">
+    </div>
+    <div class="form-group">
+      <label for="status">Status</label>
+      <select
+        class="form-control"
+        name="status"
+        id="status"
+        [(ngModel)]='companyDetails.status'>
+          <option>researching</option>
+          <option>pending approval</option>
+          <option>approved</option>
+          <option>declined</option>
+        </select>
+    </div>
+    <div class="form-group">
+      <label for="address">Company Address</label>
+      <textarea
+        name="address"
+        class="form-control"
+        id="address"
+        rows="3"
+        [(ngModel)]='companyDetails.address'>
+      </textarea>
+    </div>
+    <div class="form-group">
+      <label for="companyInfo">Company Info</label>
+      <textarea
+        class="form-control"
+        id="companyInfo"
+        rows="3"
+        name="companyInfo"
+        [(ngModel)]="companyDetails.modeOfOperations"></textarea>
+    </div>
+    <div class="form-group">
+      <label for="keyContacts">Key Contacts</label>
+      <textarea
+        class="form-control"
+        id="keyContacts"
+        name="keyContacts"
+        [(ngModel)]='companyKeyContact'
+        rows="3">
+      </textarea>
+    </div>
+    <button type="submit" class="btn btn-primary" (click)="saveCompanyDetails()">Submit</button>
+  </form>
+</div>

@@ -1,29 +1,28 @@
-<!-- <div class='col-lg-12 col-sm-12' *ngFor='let company of companyTrackerData'>
-  <div class='col-lg-2 col-sm-2'>
-    <span class='col-lg-12 col-sm-12'>Company Logo</span>
-    <span class='col-lg-12 col-sm-12'>{{ company.name }}</span>
-  </div>
-  <div class='col-lg-5 col-sm-5'>
-    <span class='col-lg-12 col-sm-12'>{{ company.address }}</span>
-    <div class='col-lg-12 col-sm-12'>
-      <div *ngFor='let contact of company.keyContacts'>
-        <span>{{contact.name}}</span>
-        <span>{{contact.email}}</span>
-        <span>{{contact.designation}}</span>
-        <span>{{contact.phone}}</span>
-      </div>
+<div class="company-list">
+  <div class="row">
+    <div class="col-md-3 offset-md-9">
+      <button type="button" (click)="addNewCompany()" class="new-company-btn btn btn-primary">
+        Add New Company
+      </button>
     </div>
   </div>
-  <div class='col-lg-5 col-sm-5'>
-
-  </div>
-</div> -->
-
-<div class="card" style="width: 18rem;">
-  <img class="card-img-top" src="..." alt="Card image cap">
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
+  <table class="table table-dark company-list-table">
+    <thead>
+      <tr>
+        <th scope="col">Company Name</th>
+        <th scope="col">Status</th>
+        <th scope="col">Address</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor='let company of companyTrackerData'>
+        <td>{{ company.name }}</td>
+        <td>{{ company.status }}</td>
+        <td>{{ company.address }}</td>
+        <td><a routerLink='/company-details/{{company.name}}'>View Details</a></td>
+      </tr>
+    </tbody>
+  </table>
 </div>
+

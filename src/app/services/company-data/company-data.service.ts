@@ -15,4 +15,5 @@ export class CompanyTrackerDataService {
   public getCompanyData(): Observable<Array<CompanyData>> {
     return this.http.get<Array<CompanyData>>('./assets/company-list.json');
   }
+
 }

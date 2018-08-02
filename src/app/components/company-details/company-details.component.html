@@ -1,0 +1,64 @@
+<div class="card company-detaills"  *ngIf='companyDetails'>
+  <div class="row">
+    <div class="col-md-3">
+      <div class="go-back-link">
+        <a routerLink='/'>Go Back</a>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="companyDetailsDeleted" class="alert alert-success alert-dismissible fade show" role="alert">
+    <strong>{{ companyDetails.name }} will be deleted!!</strong>
+    <button type="button" (click)='goBackToHome()' class="close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <div class="card-body">
+    <h5 class="card-title">
+      <span class="card-title-name">{{ companyDetails.name }}</span>
+      <span class="card-buttons">
+        <button
+          class='btn btn-warning company-edit-btn'
+          (click)='editCompanyDetails(companyDetails)'>
+          Edit
+        </button>
+        <button
+          class='btn btn-danger company-delete-btn'
+          (click)='deleteCompanyDetails(companyDetails)'>Delete</button>
+      </span>
+    </h5>
+    <h6 class="card-subtitle mb-2 text-muted">{{ companyDetails.status }}</h6>
+    <div class="col-lg">
+      <h6>Address: </h6>
+      <span>{{ companyDetails.address }}</span>
+    </div>
+    <div class="col-lg">
+      <h6>Company Info: </h6>
+      <span>{{ companyDetails.modeOfOperations }}</span>
+    </div>
+    <div class="col-lg">
+      <h6>Key Contacts: </h6>
+      <ul *ngFor="let contact of companyDetails.keyContacts">
+        <li>
+          {{ contact }}
+        </li>
+      </ul>
+    </div>
+
+    <div class="col-lg">
+      <h6>Financial Performance: </h6>
+      <div>
+        <canvas
+          baseChart
+          [chartType]="'bar'"
+          [datasets]="this.companyDetails.financialPerformance"
+          [labels]="this.companyDetails.chartLabels"
+          [options]="chartOptions"
+          [legend]="true"
+          [colors]="colors"
+          (chartClick)="onChartClick($event)">
+        </canvas>
+      </div>
+    </div>
+  </div>
+</div>

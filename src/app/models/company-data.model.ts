@@ -6,9 +6,10 @@ export interface ICompanyData {
   name: string;
   address: string;
   status: string;
-  modeOfOperations: Array<string>;
-  keyContacts: Array<ICompanyKeyContact>;
-  financialPerformance: ICompanyFinancialPerformance;
+  modeOfOperations: string;
+  keyContacts: Array<string>;
+  financialPerformance?: Array<ICompanyFinancialPerformance>;
+  chartLabels?: Array<string>;
 }
 
 interface ICompanyKeyContact {
@@ -19,17 +20,18 @@ interface ICompanyKeyContact {
 }
 
 interface ICompanyFinancialPerformance {
-  years: Array<Number>;
-  targetAchieved: Array<Number>;
+  label: string;
+  data: Array<Number>;
 }
 
-export class CompanyData {
+export class CompanyData implements ICompanyData {
   constructor(
     public name: string,
     public address: string,
     public status: string,
-    public modeOfOperations: Array<string>,
-    public keyContacts: Array<ICompanyKeyContact>,
-    public financialPerformance: ICompanyFinancialPerformance,
+    public modeOfOperations: string,
+    public keyContacts: Array<string>,
+    public financialPerformance?: Array<ICompanyFinancialPerformance>,
+    public chartLabels?: Array<string>,
   ) {}
 }
